@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agg Solutions - Plant Disease Detection</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #e8f5e9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navbar {
+            background-color: #2e7d32;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+        .navbar button {
+            background-color: #a5d6a7;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+        .navbar button:hover {
+            background-color: #81c784;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 30px;
+        }
+        .plant-images {
+            width: 150px;
+        }
+        .upload-section {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        .upload-box {
+            border: 2px dashed gray;
+            padding: 20px;
+            width: 100%;
+            cursor: pointer;
+            background-color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background 0.3s ease-in-out;
+        }
+        .upload-box:hover {
+            background-color: #f1f8e9;
+        }
+        .upload-box img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+        #preview {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        #result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #c8e6c9;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button onclick="navigate('home')">Home</button>
+        <button onclick="navigate('history')">Past History</button>
+        <button onclick="navigate('login')">User Login</button>
+        <button onclick="navigate('switch')">Switch Accounts</button>
+        <button onclick="navigate('alerts')">Alerts</button>
+        <button onclick="navigate('logout')">Logout</button>
+        <button onclick="navigate('about')">About</button>
+    </div>
+
+    <h1 style="color: green;">Agg Solutions - Plant Disease Detection</h1>
+
+    <div class="container">
+        <img class="plant-images" src="https://source.unsplash.com/150x300/?plant" alt="Plant">
+        
+        <div class="upload-section">
+            <label class="upload-box">
+                <img src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" alt="Upload Icon">
+                <input type="file" id="upload" accept="image/*" onchange="handleImageUpload(event)" style="display: none;">
+                <p>Click or Drag to Upload an Image</p>
+            </label>
+            <img id="preview" src="" alt="Preview">
+            <div id="result">
+                <h2>Diagnosis: <span id="diagnosis">Calcium Deficiency</span></h2>
+                <p>Solution: <span id="solution">Use milk products like yogurt or eggshell powder to enrich soil.</span></p>
+            </div>
+        </div>
+
+        <img class="plant-images" src="https://source.unsplash.com/150x300/?leaves" alt="Plant">
+    </div>
+
+    <script>
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const preview = document.getElementById("preview");
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = "block";
+
+                setTimeout(() => {
+                    document.getElementById("result").style.display = "block";
+                }, 2000);
+            }
+        }
+
+        function navigate(page) {
+            alert("Navigating to " + page);
+        }
+    </script>
+</body>
+</html>
